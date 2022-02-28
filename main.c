@@ -5,19 +5,23 @@
 
 #include <stdio.h>
 
-int matrizDeCustos[20][20], completadas[20], numeroDeCidadesTotais, custoTotal = 0;
+int matrizDeCustos[20][20], completadas[20], numeroDeCidadesTotais, custoTotal = 0, cidadeDeInicio;
 
 void Input() {
 
-    printf("Numero de cidades a serem visitadas pelo caixeiro viajante: ");
+    printf("\n\nNumero de cidades a serem visitadas pelo caixeiro viajante: ");
     scanf("%d", &numeroDeCidadesTotais);
 
-    printf("\n=============================================\n ");
+    printf("\nO caixeiro comeca sua viagem por qual cidade? (1 a %d)\n", numeroDeCidadesTotais);
+    scanf("%d", &cidadeDeInicio);
+    cidadeDeInicio--;
+
+    printf("\n=============================================\n");
     printf("Matriz de custos de viagem entre cada cidade:\n ");
 
     for (int i = 0; i < numeroDeCidadesTotais; i++)
     {
-       printf("Custo de viagem da cidade %d para as outras: \n", i+1);
+       printf("\nCusto de viagem da cidade %d para as outras: ", i+1);
 
         for (int j = 0; j < numeroDeCidadesTotais; j++)
         {
@@ -73,12 +77,12 @@ void custoMinimoDaCidade(int cidade) {
 
     completadas[cidade] = 1;
 
-    printf(" %d --->", cidade+1);
+    printf("%d ---> ", cidade+1);
     nCidade = CalculaMinimo(cidade);
 
     if(nCidade == 9999)
     {
-        nCidade = 0;
+        nCidade = cidadeDeInicio;
         printf("%d", nCidade+1);
         custoTotal += matrizDeCustos[cidade][nCidade];
 
@@ -93,8 +97,8 @@ int main(int argc, char const *argv[])
 {
     Input();
 
-    printf("\n\nO caminho do caixeiro é:\n");
-    custoMinimoDaCidade(0); 
+    printf("\n\nO caminho do caixeiro eh:\n");
+    custoMinimoDaCidade(cidadeDeInicio); 
 
     printf("\n\nCusto minimo da viagem: %d\n", custoTotal);
 
