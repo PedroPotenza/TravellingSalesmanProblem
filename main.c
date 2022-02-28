@@ -25,10 +25,14 @@ void Input() {
 
         for (int j = 0; j < numeroDeCidadesTotais; j++)
         {
-           printf("\n%d ----> %d\nCusto: ", i+1, j+1);
-           scanf("\t%d", &matrizDeCustos[i][j]);
-
-           completadas[i] = 0;
+            if(i == j) {
+                matrizDeCustos[i][j] == 0;
+            } else {
+                printf("\n%d ----> %d\nCusto: ", i+1, j+1);
+                scanf("\t%d", &matrizDeCustos[i][j]);
+            }
+            
+            completadas[i] = 0;
         }
        
     }
