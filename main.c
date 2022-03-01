@@ -58,9 +58,9 @@ int CalculaMinimo(int cidade) {
     for (int i = 0; i < numeroDeCidadesTotais; i++)
     {
         if(matrizDeCustos[cidade][i] != 0 && completadas[i] == 0){
-            if(matrizDeCustos[cidade][i] + matrizDeCustos[i][cidade] < minimo)
+            if(matrizDeCustos[cidade][i] + matrizDeCustos[i][cidadeDeInicio] < minimo)
             {
-                minimo = matrizDeCustos[i][0] + matrizDeCustos [cidade][i];
+                minimo = matrizDeCustos[i][cidadeDeInicio] + matrizDeCustos [cidade][i];
                 minimoCustoDaCidade = matrizDeCustos[cidade][i];
                 numeroCidade = i;
             }
